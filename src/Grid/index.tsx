@@ -1,15 +1,17 @@
 import React from 'react';
 import { ResponsiveGridMapping, Repeat } from './types'
-import styles from './index.css'
-import classnames from 'classnames'
+import  './index.css'
+import { useBreakpoint } from '../BreakPoint';
 
 type GridProps = {
-    cols: Repeat;
+    cols?: Repeat;
     row?: Repeat;
 }
 
-const Grid: React.FC<GridProps> = ({children}) => {
-    return <div className={classnames(styles.gridRoot)}>{children}</div>;
+const Grid: React.FC<GridProps> = ({ children }) => {
+    const bp = useBreakpoint();
+    console.log(bp)
+    return <div className="gridRoot">{children}</div>;
 }
 
 type GridItemProps = {
