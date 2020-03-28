@@ -46,7 +46,7 @@ export class Repeat extends GridCSSItem {
     }
 }
 
-export type ResponsiveGridValue = GridSpan | [number, number | GridSpan]
+export type ResponsiveGridValue = GridSpan | [number, number | GridSpan] | number
 
 export type ResponsiveMapping<T> = {
     xs: T;

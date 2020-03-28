@@ -3,6 +3,7 @@ import { ResponsiveGridMapping, Repeat, getBP, ResponsiveGridValue } from './typ
 import  './index.css'
 import { useBreakpoint } from '../BreakPoint';
 
+
 type GridProps = {
     cols: Repeat;
     row?: Repeat;
@@ -32,13 +33,14 @@ const joinSelectors = (mapping: ResponsiveGridValue): string =>
     ? mapping.map(String).join(" / ") 
     : mapping.toString();
 
-const GridItem: React.FC<GridItemProps> = ({ children, col }) => {
+const GridItem: React.FC<GridItemProps> = ({ children, col, row }) => {
     const bp = useBreakpoint();
     const bpSelector = getBP(bp);
 
     return <div style={{
         position: 'relative',
-        gridColumn: joinSelectors(bpSelector(col))
+        gridColumn: joinSelectors(bpSelector(col)),
+        gridRow: row && joinSelectors(bpSelector(row))
     }}>{children}</div>;
 }
 
