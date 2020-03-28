@@ -1,5 +1,5 @@
 import React from 'react';
-import { ResponsiveGridMapping, Repeat, getBP } from './types'
+import { ResponsiveGridMapping, Repeat, getBP, ResponsiveGridValue } from './types'
 import  './index.css'
 import { useBreakpoint } from '../BreakPoint';
 
@@ -8,10 +8,8 @@ type GridProps = {
     row?: Repeat;
 }
 
+//TODO: Rename To GridLayout
 const Grid: React.FC<GridProps> = ({ cols, children }) => {
-    const bp = useBreakpoint();
-    const bpSelector = getBP(bp);
-    console.log(bp)
     return <div className="gridRoot" style={{
         display: 'grid',
         gridGap: '1rem',
@@ -26,11 +24,22 @@ const Grid: React.FC<GridProps> = ({ cols, children }) => {
 
 type GridItemProps = {
     col: ResponsiveGridMapping,
-    row: ResponsiveGridMapping
+    row?: ResponsiveGridMapping
 }
 
-const GridItem: React.FC<GridItemProps> = ({children}) => {
-    return <div>{children}</div>;
+const joinSelectors = (mapping: ResponsiveGridValue): string => 
+    Array.isArray(mapping) 
+    ? mapping.map(String).join(" / ") 
+    : mapping.toString();
+
+const GridItem: React.FC<GridItemProps> = ({ children, col }) => {
+    const bp = useBreakpoint();
+    const bpSelector = getBP(bp);
+
+    return <div style={{
+        position: 'relative',
+        gridColumn: joinSelectors(bpSelector(col))
+    }}>{children}</div>;
 }
 
 export {

@@ -1,4 +1,4 @@
-export class MaxWidthPx {
+export class MinWidthPx {
     width: number;
 
     constructor(x: number){
@@ -6,7 +6,7 @@ export class MaxWidthPx {
     }
 
     toString(){
-        return `(max-width: ${this.width}px)`
+        return `(min-width: ${this.width}px)`
     }
 }
 

@@ -46,8 +46,7 @@ export class Repeat extends GridCSSItem {
     }
 }
 
-export type ResponsiveGridValue = [number,number] | GridSpan
-
+export type ResponsiveGridValue = GridSpan | [number, number | GridSpan]
 
 export type ResponsiveMapping<T> = {
     xs: T;
@@ -57,12 +56,23 @@ export type ResponsiveMapping<T> = {
     xl?: T;
 }
 
-const ResponseSizes: Array<keyof ResponsiveMapping<{}>> = ["xs" , "sm" , "md" , "lg" , "xl"];
+const RESPONSIVE_SIZES: Array<keyof ResponsiveMapping<{}>> = ["xs" , "sm" , "md" , "lg" , "xl"];
 
 const safeKeys = <T extends {}>(x: T) => Object.keys(x) as Array<keyof T>
 
-//TODO: Better type saftey on bp and context
-export const getBP = (bp: string) => <T>(rm: ResponsiveMapping<T>) => rm[bp as keyof ResponsiveMapping<{}>] || rm["xs"]
+// TODO: Better type saftey on bp and context
+// TODO: Test Coverage
+// TODO: Utils
+export const getBP = (bp: string) => <T>(rm: ResponsiveMapping<T>) => {
+    const _bp = bp as keyof ResponsiveMapping<{}>;
+    const activeSizes: Array<keyof ResponsiveMapping<{}>> = 
+        RESPONSIVE_SIZES.indexOf(_bp) > -1 
+        ? RESPONSIVE_SIZES.slice(0, RESPONSIVE_SIZES.indexOf(_bp) + 1) 
+        : ["xs"];
+
+    const active = activeSizes.map(size => rm[size]).filter(val => val !== undefined)
+    return active[active.length - 1] || rm['xs']
+}
 
 export class ResponsiveMappingFunctor<T> implements Functor<T>{
     value: ResponsiveMapping<T>

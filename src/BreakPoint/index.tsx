@@ -1,18 +1,19 @@
 import React from 'react'
 import { ResponsiveMapping, ResponsiveMappingFunctor } from '../Grid/types';
-import { MaxWidthPx } from './types'
+import { MinWidthPx } from './types'
 
-const defaultQueries: ResponsiveMapping<MaxWidthPx> = {
-  xs: new MaxWidthPx(600),
-  sm: new MaxWidthPx(960),
-  md: new MaxWidthPx(1280),
-  lg: new MaxWidthPx(1920),
+const defaultQueries: ResponsiveMapping<MinWidthPx> = {
+  xs: new MinWidthPx(0),
+  sm: new MinWidthPx(600),
+  md: new MinWidthPx(960),
+  lg: new MinWidthPx(1280),
+  xl: new MinWidthPx(1920),
 }
 
 const BreakpointContext: React.Context<string> = React.createContext('xs');
 
 type BreakpointProviderProps = {
-  queries?: ResponsiveMapping<MaxWidthPx>
+  queries?: ResponsiveMapping<MinWidthPx>
 }
 
 const safeKeys = <T extends {}>(x: T) => Object.keys(x) as Array<keyof T>
@@ -47,7 +48,7 @@ const BreakpointProvider: React.FC<BreakpointProviderProps> = ({children, querie
     const keys = queryMatch !== null ? safeKeys(queryMatch.value) : [];
     const value = keys.reduce((acc,key) => {
       return queryMatch !== null && queryMatch.value[key] ? key : acc;
-    },"xs")
+    }, "xs")
 
     return (
       <BreakpointContext.Provider value={value}>
@@ -58,6 +59,7 @@ const BreakpointProvider: React.FC<BreakpointProviderProps> = ({children, querie
 
 function useBreakpoint() {
     const context = React.useContext(BreakpointContext);
+    // TODO: Need to hae a no Provider state
     // if(context === {}) {
     //     throw new Error('useBreakpoint must be used within BreakpointProvider');
     // }
