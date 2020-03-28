@@ -10,7 +10,7 @@ type GridProps = {
 }
 
 //TODO: Rename To GridLayout
-const Grid: React.FC<GridProps> = ({ cols, children }) => {
+const GridLayout: React.FC<GridProps> = ({ cols, children }) => {
     return <div className="gridRoot" style={{
         display: 'grid',
         gridGap: '1rem',
@@ -45,6 +45,6 @@ const GridItem: React.FC<GridItemProps> = ({ children, col, row }) => {
 }
 
 export {
-    Grid, 
+    GridLayout, 
     GridItem
 }
