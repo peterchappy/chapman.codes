@@ -1,3 +1,5 @@
+import { Functor } from '../Functor'
+
 export class GridCSSItem {
 
 }
@@ -51,6 +53,20 @@ export type ResponsiveMapping<T> = {
     md?: T;
     lg?: T;
     xl?: T;
+}
+
+export class ResponsiveMappingFunctor<T> implements Functor<T>{
+    value: ResponsiveMapping<T>
+
+    constructor(x: ResponsiveMapping<T>){
+        this.value = x
+    }
+
+    map<U>(f: (x: T) => U): ResponsiveMappingFunctor<U> {
+        const keys = Object.keys(this.value);
+        const newValue = keys.reduce((acc, key) => ({ ...acc, [key]: f(this.value[key]) }), {} as ResponsiveMapping<U>)
+        return new ResponsiveMappingFunctor(newValue)
+    }
 }
 
 export type ResponsiveGridMapping = ResponsiveMapping<ResponsiveGridValue>
