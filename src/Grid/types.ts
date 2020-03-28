@@ -30,7 +30,7 @@ export class FR extends GridCSSItem {
 
 export class Repeat extends GridCSSItem {
     x: number
-    y:number;
+    y: number;
 
     constructor(x:number, y:number){
         super();
