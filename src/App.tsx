@@ -3,11 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import { BreakpointProvider } from './BreakPoint';
 import { Grid } from './Grid';
+import { Repeat } from './Grid/types';
 
 function App() {
   return (
     <BreakpointProvider>
-      <Grid>
+      <Grid cols={new Repeat(8)}>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />

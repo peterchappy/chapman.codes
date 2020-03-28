@@ -34,20 +34,20 @@ export class Repeat extends GridCSSItem {
     x: number
     y: number;
 
-    constructor(x:number, y:number){
+    constructor(x:number, y:number = 1){
         super();
         this.x = x
         this.y = y
     }
 
+    // TODO: Support more than fr
     toString(){
-        return `repeat(${this.x}, ${this.y})`
+        return `repeat(${this.x}, minmax(0px, ${this.y}fr))`
     }
 }
 
 export type ResponsiveGridValue = [number,number] | GridSpan
 
-type ResponseSizes = "xs" | "sm" | "md" | "lg" | "xl";
 
 export type ResponsiveMapping<T> = {
     xs: T;
@@ -57,7 +57,12 @@ export type ResponsiveMapping<T> = {
     xl?: T;
 }
 
+const ResponseSizes: Array<keyof ResponsiveMapping<{}>> = ["xs" , "sm" , "md" , "lg" , "xl"];
+
 const safeKeys = <T extends {}>(x: T) => Object.keys(x) as Array<keyof T>
+
+//TODO: Better type saftey on bp and context
+export const getBP = (bp: string) => <T>(rm: ResponsiveMapping<T>) => rm[bp as keyof ResponsiveMapping<{}>] || rm["xs"]
 
 export class ResponsiveMappingFunctor<T> implements Functor<T>{
     value: ResponsiveMapping<T>
