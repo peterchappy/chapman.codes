@@ -1,5 +1,5 @@
 import React from 'react'
-import { ResponsiveMapping, ResponsiveMappingFunctor } from '../Grid/types';
+import { ResponsiveMapping, ResponsiveMappingFunctor, getBP } from '../Grid/types';
 import { MinWidthPx } from './types'
 
 const defaultQueries: ResponsiveMapping<MinWidthPx> = {
@@ -57,7 +57,13 @@ const BreakpointProvider: React.FC<BreakpointProviderProps> = ({children, querie
     );
 }
 
-function useBreakpoint() {
+export const BreakPointUp: React.FC<ResponsiveMapping<React.FC<{ bp: string }>>> = ({ children, ...responsiveMapping }) => {
+  const bp = useBreakpoint();
+  const el = getBP(bp)(responsiveMapping)
+  return React.createElement(el, { bp })
+}
+
+const useBreakpoint = () => {
     const context = React.useContext(BreakpointContext);
     // TODO: Need to hae a no Provider state
     // if(context === {}) {
