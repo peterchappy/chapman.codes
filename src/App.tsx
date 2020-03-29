@@ -23,7 +23,7 @@ function App() {
               <FlexLayout flexDirection='column' alignItems='flex-end' justifyContent='center'>
                 {['About', "Blog", "Projects", "Contact"].map(val => 
                   <div>
-                    <Typography variant='h6' key={val}>{val}</Typography>
+                    <Typography variant='h6' key={val}>{val.toUpperCase()}</Typography>
                   </div>
                 )}
               </FlexLayout>
