@@ -18,7 +18,7 @@ function App() {
         </GridItem>
         <GridItem col={{ xs: [7, new GridSpan(1)], md: [6, new GridSpan(1)]}} row={{ xs: 1 }}>
           <BreakPointUp 
-            xs={() => <div>X</div>} 
+            xs={() => null} 
             sm={() => (
               <FlexLayout flexDirection='column' alignItems='flex-end' justifyContent='center'>
                 {['About', "Blog", "Projects", "Contact"].map(val => 
@@ -31,15 +31,20 @@ function App() {
           />
         </GridItem>
         {/* 333333 */}
-        <GridItem col={MainCol} row={{ xs: 2 }}><div style={{
-          width: "100%",
-          height: "2px",
-          backgroundColor: "#333333"
-        }} /></GridItem>
-
+        <GridItem col={MainCol} row={{ xs: 2 }}>
+          <div style={{
+              width: "100%",
+              height: "2px",
+              backgroundColor: "#333333"
+            }} 
+          />
+        </GridItem>
         <GridItem col={MainCol} row={{ xs: 3 }}>
           <div style={{ padding: '0.25rem'}}>
-            <Typography>{"This site is currently in progress. Feel Free to reach out to me "}<a href="mailto:petechapman@protonmail.com">here</a></Typography>
+            <Typography>
+              {"This site is currently in progress. Feel Free to reach out to me "}
+              <a href="mailto:petechapman@protonmail.com">here</a>
+            </Typography>
           </div>
         </GridItem>
       </GridLayout>
