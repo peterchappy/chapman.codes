@@ -43,7 +43,7 @@ const BreakpointProvider: React.FC<BreakpointProviderProps> = ({children, querie
         return () => {
             mediaQueryLists.map(mediaQuery => mediaQuery.removeListener(handleQueryListener))
         }
-      }, [queries, queryStrings]);
+      }, [queryStrings]);
 
     const keys = queryMatch !== null ? safeKeys(queryMatch.value) : [];
     const value = keys.reduce((acc,key) => {
