@@ -1,13 +1,11 @@
 export class MinWidthPx {
-    width: number;
+  width: number;
 
-    constructor(x: number){
-        this.width = x;
-    }
+  constructor(x: number) {
+    this.width = x;
+  }
 
-    toString(){
-        return `(min-width: ${this.width}px)`
-    }
+  toString() {
+    return `(min-width: ${this.width}px)`;
+  }
 }
-
-

@@ -1,13 +1,22 @@
-import React from 'react';
-import './App.css';
-import { BreakpointProvider } from './BreakPoint';
-import { GridLayout, GridItem } from './Grid';
-import { Repeat, GridSpan, ResponsiveMapping, ResponsiveGridValue } from './Grid/types';
-import { Typography } from './Typography';
-import { BrowserRouter as Router } from "react-router-dom";
-import { Header } from './Header';
+import React from "react";
+import "./App.css";
+import { BreakpointProvider } from "./BreakPoint";
+import { GridLayout, GridItem } from "./Grid";
+import {
+  Repeat,
+  GridSpan,
+  ResponsiveMapping,
+  ResponsiveGridValue,
+} from "./Grid/types";
+import { Typography } from "./Typography";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Header } from "./Header";
+import { Routes } from "./Routes";
 
-const MainCol: ResponsiveMapping<ResponsiveGridValue> = { xs: [2, new GridSpan(6)], md: [3, new GridSpan(4)]};
+const MainCol: ResponsiveMapping<ResponsiveGridValue> = {
+  xs: [2, new GridSpan(6)],
+  md: [3, new GridSpan(4)],
+};
 
 function App() {
   return (
@@ -15,19 +24,24 @@ function App() {
       <BreakpointProvider>
         <GridLayout cols={new Repeat(8)}>
           <Header />
-          {/* 333333 */}
           <GridItem col={MainCol} row={{ xs: 2 }}>
-            <div style={{
+            <div
+              style={{
                 width: "100%",
                 height: "2px",
-                backgroundColor: "#333333"
-              }} 
+                backgroundColor: "#333333",
+              }}
             />
           </GridItem>
           <GridItem col={MainCol} row={{ xs: 3 }}>
-            <div style={{ padding: '0.25rem'}}>
+            <Route path={Routes.ABOUT}>{Routes.ABOUT}</Route>
+            <Route path={Routes.BLOG}>{Routes.BLOG}</Route>
+            <Route path={Routes.PROJECTS}>{Routes.PROJECTS}</Route>
+            <div style={{ padding: "0.25rem" }}>
               <Typography>
-                {"This site is currently in progress. Feel Free to reach out to me "}
+                {
+                  "This site is currently in progress. Feel Free to reach out to me "
+                }
                 <a href="mailto:petechapman@protonmail.com">here</a>
               </Typography>
             </div>
