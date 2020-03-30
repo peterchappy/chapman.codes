@@ -9,7 +9,7 @@ import {
   ResponsiveGridValue,
 } from "./Grid/types";
 import { Typography } from "./Typography";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Header } from "./Header";
 import { Routes } from "./Routes";
 
@@ -34,17 +34,19 @@ function App() {
             />
           </GridItem>
           <GridItem col={MainCol} row={{ xs: 3 }}>
-            <Route path={Routes.ABOUT}>{Routes.ABOUT}</Route>
-            <Route path={Routes.BLOG}>{Routes.BLOG}</Route>
-            <Route path={Routes.PROJECTS}>{Routes.PROJECTS}</Route>
-            <div style={{ padding: "0.25rem" }}>
-              <Typography>
-                {
-                  "This site is currently in progress. Feel Free to reach out to me "
-                }
-                <a href="mailto:petechapman@protonmail.com">here</a>
-              </Typography>
-            </div>
+            <Switch>
+              <Route path={Routes.ABOUT}>
+                <GridLayout cols="subgrid">{Routes.ABOUT}</GridLayout>
+              </Route>
+              <div style={{ padding: "0.25rem" }}>
+                <Typography>
+                  {
+                    "This site is currently in progress. Feel Free to reach out to me "
+                  }
+                  <a href="mailto:petechapman@protonmail.com">here</a>
+                </Typography>
+              </div>
+            </Switch>
           </GridItem>
         </GridLayout>
       </BreakpointProvider>

@@ -8,13 +8,38 @@ import {
 import "./index.css";
 import { useBreakpoint } from "../BreakPoint";
 
+//TODO: Better default for Context.
+const SubGridContext: React.Context<ResponsiveGridValue> = React.createContext(
+  -1 as ResponsiveGridValue
+);
+const useSubGrid = () => {
+  const context = React.useContext(SubGridContext);
+  // TODO: Need to hae a no Provider state
+  // if(context === {}) {
+  //     throw new Error('useBreakpoint must be used within BreakpointProvider');
+  // }
+  return context;
+};
+
 type GridProps = {
-  cols: Repeat;
+  cols: Repeat | "subgrid";
   row?: Repeat;
 };
 
+const getColSpan = (val: ResponsiveGridValue) =>
+  typeof val === "number"
+    ? new Repeat(1)
+    : Array.isArray(val)
+    ? new Repeat(typeof val[1] === "number" ? val[1] : val[1].value)
+    : new Repeat(val.value);
+
 //TODO: Rename To GridLayout
 const GridLayout: React.FC<GridProps> = ({ cols, children }) => {
+  const gridValues = useSubGrid();
+  console.log(getColSpan(gridValues).toString());
+  const gridTemplateColumns =
+    cols === "subgrid" ? getColSpan(gridValues).toString() : cols.toString();
+
   return (
     <div
       className="gridRoot"
@@ -26,7 +51,7 @@ const GridLayout: React.FC<GridProps> = ({ cols, children }) => {
         margin: "0 auto",
         gridAutoRows: "min-content",
         position: "relative",
-        gridTemplateColumns: cols.toString(),
+        gridTemplateColumns,
       }}
     >
       {children}
@@ -45,16 +70,19 @@ const joinSelectors = (mapping: ResponsiveGridValue): string =>
 const GridItem: React.FC<GridItemProps> = ({ children, col, row }) => {
   const bp = useBreakpoint();
   const bpSelector = getBP(bp);
+  const gridColumn: ResponsiveGridValue = bpSelector(col);
 
   return (
     <div
       style={{
         position: "relative",
-        gridColumn: joinSelectors(bpSelector(col)),
+        gridColumn: joinSelectors(gridColumn),
         gridRow: row && joinSelectors(bpSelector(row)),
       }}
     >
-      {children}
+      <SubGridContext.Provider value={gridColumn}>
+        {children}
+      </SubGridContext.Provider>
     </div>
   );
 };
