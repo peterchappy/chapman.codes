@@ -1,7 +1,7 @@
 import Octicon, { Mail, MarkGithub } from "@primer/octicons-react";
 import React from "react";
 import { BreakPointUp } from "../BreakPoint";
-import { xsMainCol } from "../constants";
+import { xsMainCol, MainCol } from "../constants";
 import { FlexLayout } from "../FlexLayout";
 import { GridItem } from "../Grid";
 import { GridSpan } from "../Grid/types";
@@ -12,15 +12,16 @@ type HeaderProps = {};
 const Header: React.FC<HeaderProps> = () => {
   return (
     <>
-      <GridItem
-        col={{ xs: xsMainCol, sm: [2, new GridSpan(10)] }}
-        row={{ xs: 1 }}
-      >
+      <GridItem col={MainCol} row={{ xs: 1 }}>
         <Typography variant="h1">chapman.codes</Typography>
-        <Typography variant="h5">My little piece of the internet.</Typography>
+        <Typography variant="h4">My little piece of the internet.</Typography>
       </GridItem>
       <GridItem
-        col={{ xs: xsMainCol, sm: [14, new GridSpan(2)] }}
+        col={{
+          xs: xsMainCol,
+          sm: [13, new GridSpan(2)],
+          md: [12, new GridSpan(2)],
+        }}
         row={{ xs: 2, sm: 1 }}
       >
         <BreakPointUp

@@ -23,7 +23,7 @@ const DEFAULT_THEME: Record<VariantKind, FontOptionsProps> = {
   h6: {
     fontSize: "1rem",
     fontFamily: "'Roboto Mono', monospace",
-    fontWeight: 500,
+    fontWeight: 400,
   },
   h5: {
     fontSize: "1.25rem",
