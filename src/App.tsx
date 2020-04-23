@@ -1,22 +1,15 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { About } from "./About";
 import "./App.css";
 import { BreakpointProvider } from "./BreakPoint";
-import { GridLayout, GridItem } from "./Grid";
-import {
-  Repeat,
-  GridSpan,
-  ResponsiveMapping,
-  ResponsiveGridValue,
-} from "./Grid/types";
-import { Typography } from "./Typography";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { MainCol } from "./constants";
+import { GridItem, GridLayout } from "./Grid";
+import { Repeat } from "./Grid/types";
 import { Header } from "./Header";
 import { Routes } from "./Routes";
-
-const MainCol: ResponsiveMapping<ResponsiveGridValue> = {
-  xs: [2, new GridSpan(6)],
-  md: [3, new GridSpan(4)],
-};
+import { Typography } from "./Typography";
+import { HorizontalRule } from "./HorizontalRule";
 
 function App() {
   return (
@@ -24,19 +17,13 @@ function App() {
       <BreakpointProvider>
         <GridLayout cols={new Repeat(8)}>
           <Header />
-          <GridItem col={MainCol} row={{ xs: 2 }}>
-            <div
-              style={{
-                width: "100%",
-                height: "2px",
-                backgroundColor: "#333333",
-              }}
-            />
+          <GridItem col={MainCol}>
+            <HorizontalRule />
           </GridItem>
-          <GridItem col={MainCol} row={{ xs: 3 }}>
+          <GridItem col={MainCol}>
             <Switch>
               <Route path={Routes.ABOUT}>
-                <GridLayout cols="subgrid">{Routes.ABOUT}</GridLayout>
+                <About />
               </Route>
               <div style={{ padding: "0.25rem" }}>
                 <Typography>

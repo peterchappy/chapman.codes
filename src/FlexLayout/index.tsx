@@ -25,13 +25,19 @@ type FlexLayoutProps = {
     | "end"
     | "left"
     | "right";
+  fullHeight?: boolean;
 };
 
-const FlexLayout: React.FC<FlexLayoutProps> = ({ children, ...props }) => {
+const FlexLayout: React.FC<FlexLayoutProps> = ({
+  children,
+  fullHeight,
+  ...props
+}) => {
   return (
     <div
       style={{
         display: "flex",
+        ...(fullHeight ? { height: "100%" } : {}),
         ...props,
       }}
     >
