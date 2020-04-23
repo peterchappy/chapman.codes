@@ -13,19 +13,19 @@ const Header: React.FC<HeaderProps> = () => {
   return (
     <>
       <GridItem
-        col={{ xs: [2, new GridSpan(5)], md: [3, new GridSpan(3)] }}
+        col={{ xs: xsMainCol, sm: [2, new GridSpan(10)] }}
         row={{ xs: 1 }}
       >
         <Typography variant="h1">chapman.codes</Typography>
         <Typography variant="h5">My little piece of the internet.</Typography>
       </GridItem>
       <GridItem
-        col={{ xs: xsMainCol, md: [6, new GridSpan(1)] }}
-        row={{ xs: 2, md: 1 }}
+        col={{ xs: xsMainCol, sm: [14, new GridSpan(2)] }}
+        row={{ xs: 2, sm: 1 }}
       >
         <BreakPointUp
           xs={({ bp }) => {
-            const isMobileNav = ["xs", "sm"].includes(bp);
+            const isMobileNav = ["xs"].includes(bp);
             return (
               <>
                 <FlexLayout

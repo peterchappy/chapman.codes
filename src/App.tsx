@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { About } from "./About";
 import "./App.css";
 import { BreakpointProvider } from "./BreakPoint";
-import { MainCol } from "./constants";
+import { MainCol, TOTAL_GRID_COLS } from "./constants";
 import { GridItem, GridLayout } from "./Grid";
 import { Repeat } from "./Grid/types";
 import { Header } from "./Header";
@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <BreakpointProvider>
-        <GridLayout cols={new Repeat(8)}>
+        <GridLayout cols={new Repeat(TOTAL_GRID_COLS)}>
           <Header />
           <GridItem col={MainCol}>
             <HorizontalRule />
