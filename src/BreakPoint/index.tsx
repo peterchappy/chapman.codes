@@ -29,7 +29,11 @@ const BreakpointProvider: React.FC<BreakpointProviderProps> = ({
   const [queryMatch, setQueryMatch] = React.useState<ResponsiveMappingFunctor<
     boolean
   > | null>(null);
-  const queryStrings = new ResponsiveMappingFunctor(queries).map(String);
+
+  const queryStrings = React.useMemo(
+    () => new ResponsiveMappingFunctor(queries).map(String),
+    [queries]
+  );
 
   React.useEffect(() => {
     if (!window || !window.matchMedia) {
@@ -47,6 +51,7 @@ const BreakpointProvider: React.FC<BreakpointProviderProps> = ({
       mediaQuery.addListener(handleQueryListener);
       return mediaQuery.matches;
     });
+
     setQueryMatch(matches);
 
     return () => {
@@ -54,7 +59,8 @@ const BreakpointProvider: React.FC<BreakpointProviderProps> = ({
         mediaQuery.removeListener(handleQueryListener)
       );
     };
-  }, [queryStrings]);
+    //eslint-disable-next-line
+  }, []);
 
   const keys = queryMatch !== null ? safeKeys(queryMatch.value) : [];
   const value = keys.reduce((acc, key) => {

@@ -23,7 +23,11 @@ function App() {
           </GridItem>
           <GridItem col={MainCol}>
             <Switch>
-              <Route exact path={Routes.ABOUT} render={() => <AboutPage />} />
+              <Route
+                exact
+                path={["/", Routes.ABOUT]}
+                render={() => <AboutPage />}
+              />
               <Route exact path={Routes.POSTS} render={() => <PostPage />} />
               <Route
                 exact

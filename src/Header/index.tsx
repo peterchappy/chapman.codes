@@ -39,7 +39,7 @@ const Header: React.FC<HeaderProps> = () => {
                   fullHeight={!isMobileNav}
                 >
                   {["about", "posts", "projects"].map((val) => (
-                    <Link style={LINK_STYLE} to={`/${val}`}>
+                    <Link key={val} style={LINK_STYLE} to={`/${val}`}>
                       <Typography variant="h6" key={val}>
                         {val.toUpperCase()}
                       </Typography>
