@@ -14,7 +14,6 @@ const SubGridContext: React.Context<ResponsiveGridValue> = React.createContext(
 );
 const useSubGrid = () => {
   const context = React.useContext(SubGridContext);
-  // TODO: Need to hae a no Provider state
   // if(context === {}) {
   //     throw new Error('useBreakpoint must be used within BreakpointProvider');
   // }
@@ -36,7 +35,6 @@ const getColSpan = (val: ResponsiveGridValue) =>
 //TODO: Rename To GridLayout
 const GridLayout: React.FC<GridProps> = ({ cols, children }) => {
   const gridValues = useSubGrid();
-  console.log(getColSpan(gridValues).toString());
   const gridTemplateColumns =
     cols === "subgrid" ? getColSpan(gridValues).toString() : cols.toString();
 

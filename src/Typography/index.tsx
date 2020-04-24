@@ -8,7 +8,7 @@ type FontOptionsProps = {
   fontFamily: string;
   fontWeight: number;
   lineHeight?: number;
-  margin?: number;
+  margin?: string;
   color?: string;
 };
 
@@ -60,11 +60,16 @@ const DEFAULT_THEME: Record<VariantKind, FontOptionsProps> = {
 
 type TypogaphyProps = {
   variant?: VariantKind;
+  style?: Partial<FontOptionsProps>;
 };
 
-const Typography: React.FC<TypogaphyProps> = ({ variant = "p", ...rest }) => {
+const Typography: React.FC<TypogaphyProps> = ({
+  variant = "p",
+  style,
+  ...rest
+}) => {
   return React.createElement(variant, {
-    style: { margin: 0, ...DEFAULT_THEME[variant] },
+    style: { margin: 0, ...DEFAULT_THEME[variant], ...style },
     ...rest,
   });
 };

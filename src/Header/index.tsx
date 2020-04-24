@@ -6,8 +6,11 @@ import { FlexLayout } from "../FlexLayout";
 import { GridItem } from "../Grid";
 import { GridSpan } from "../Grid/types";
 import { Typography } from "../Typography";
+import { Link } from "react-router-dom";
 
 type HeaderProps = {};
+
+const LINK_STYLE = { textDecoration: "none", color: "#000" };
 
 const Header: React.FC<HeaderProps> = () => {
   return (
@@ -35,16 +38,16 @@ const Header: React.FC<HeaderProps> = () => {
                   justifyContent={isMobileNav ? "space-between" : "center"}
                   fullHeight={!isMobileNav}
                 >
-                  {["About", "Blog", "Projects"].map((val) => (
-                    <div>
+                  {["about", "posts", "projects"].map((val) => (
+                    <Link style={LINK_STYLE} to={`/${val}`}>
                       <Typography variant="h6" key={val}>
                         {val.toUpperCase()}
                       </Typography>
-                    </div>
+                    </Link>
                   ))}
                   <FlexLayout alignItems="center">
                     <a
-                      style={{ textDecoration: "none" }}
+                      style={LINK_STYLE}
                       href="https://www.github.com/peterchappy"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -54,7 +57,7 @@ const Header: React.FC<HeaderProps> = () => {
                       </div>
                     </a>
                     <a
-                      style={{ textDecoration: "none" }}
+                      style={LINK_STYLE}
                       href="mailto:petechapman@protonmail.com"
                     >
                       <div>

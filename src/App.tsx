@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { About } from "./About";
+import { AboutPage } from "./About";
+import { PostPage } from "./Posts";
+import { ProjectsPage } from "./Projects";
 import "./App.css";
 import { BreakpointProvider } from "./BreakPoint";
 import { MainCol, TOTAL_GRID_COLS } from "./constants";
@@ -8,7 +10,6 @@ import { GridItem, GridLayout } from "./Grid";
 import { Repeat } from "./Grid/types";
 import { Header } from "./Header";
 import { Routes } from "./Routes";
-import { Typography } from "./Typography";
 import { HorizontalRule } from "./HorizontalRule";
 
 function App() {
@@ -22,17 +23,13 @@ function App() {
           </GridItem>
           <GridItem col={MainCol}>
             <Switch>
-              <Route path={Routes.ABOUT}>
-                <About />
-              </Route>
-              <div style={{ padding: "0.25rem" }}>
-                <Typography>
-                  {
-                    "This site is currently in progress. Feel Free to reach out to me "
-                  }
-                  <a href="mailto:petechapman@protonmail.com">here</a>
-                </Typography>
-              </div>
+              <Route exact path={Routes.ABOUT} render={() => <AboutPage />} />
+              <Route exact path={Routes.POSTS} render={() => <PostPage />} />
+              <Route
+                exact
+                path={Routes.PROJECTS}
+                component={() => <ProjectsPage />}
+              />
             </Switch>
           </GridItem>
         </GridLayout>

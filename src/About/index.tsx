@@ -2,9 +2,9 @@ import React from "react";
 import { GridLayout, GridItem } from "../Grid";
 import { Typography } from "../Typography";
 
-type AboutProps = {};
+type AboutPageProps = {};
 
-const About: React.FC<AboutProps> = () => {
+export const AboutPage: React.FC<AboutPageProps> = () => {
   return (
     <GridLayout cols="subgrid">
       <GridItem col={{ xs: [1, -1] }}>
@@ -55,5 +55,3 @@ const About: React.FC<AboutProps> = () => {
     </GridLayout>
   );
 };
-
-export { About };
