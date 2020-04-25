@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = () => {
     <>
       <GridItem col={MainCol} row={{ xs: 1 }}>
         <Typography variant="h1">chapman.codes</Typography>
-        <Typography variant="h4">My little piece of the internet.</Typography>
+        <Typography variant="h3">My corner of the internet.</Typography>
       </GridItem>
       <GridItem
         col={{

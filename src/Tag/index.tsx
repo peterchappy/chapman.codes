@@ -8,6 +8,7 @@ type TagProps = {
 export enum TagKind {
   REACT = "React",
   TYPESCRIPT = "Typescript",
+  MISC_PROGRAMMING = "Misc Programming",
 }
 
 export const Tag: React.FC<TagProps> = ({ label }) => (

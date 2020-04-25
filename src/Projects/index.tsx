@@ -17,7 +17,7 @@ export const ProjectsPage: React.FC<ProjectPageProps> = () => {
           <FlexLayout flexDirection="column" justifyContent="flex-start">
             <Link
               style={{ margin: "0 0 0.5rem 0" }}
-              typographyProps={{ variant: "h6" }}
+              typographyProps={{ variant: "h5" }}
               to={link}
               label={title}
               external

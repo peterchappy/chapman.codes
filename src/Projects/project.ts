@@ -14,7 +14,7 @@ export const projects: ProjectType[] = [
     description: `
         This page you're currently viewing! Built in React and Typescript over the course 
         of my free time during 2020 quarantine. It's very much a WIP, but what
-        portfolio isn't?
+        personal page isn't?
     `,
     tags: [TagKind.REACT, TagKind.TYPESCRIPT],
   },

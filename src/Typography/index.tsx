@@ -1,6 +1,6 @@
 import React from "react";
 
-type VariantKind = "p" | "h6" | "h5" | "h4" | "h3" | "h2" | "h1";
+type VariantKind = "p" | "h6" | "h5" | "h4" | "h3" | "h2" | "h1" | "small";
 
 type FontOptionsProps = {
   fontSize: string;
@@ -15,6 +15,11 @@ type FontOptionsProps = {
 // TODO: Memoization Function with this being defaults
 // TODO: REM CLASS
 const DEFAULT_THEME: Record<VariantKind, FontOptionsProps> = {
+  small: {
+    fontSize: "0.5rem",
+    fontFamily: "'Roboto Mono', monospace",
+    fontWeight: 400,
+  },
   p: {
     fontSize: "0.75rem",
     fontFamily: "'Roboto Mono', monospace",
