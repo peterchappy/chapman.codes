@@ -14,16 +14,7 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
         <Typography>{`
             I'm a Fullstack Software Engineer from Philadelphia. I would consider myself to be a polygot, 
             but my bread and butter is Typescript, React, and Functional Programming. 
-            I'm currently working with the awesome team over at QuotaPath doing just that.
-        `}</Typography>
-      </GridItem>
-      <GridItem col={{ xs: [1, -1] }}>
-        <Typography>{`
-            Previously, I worked Bluecadet, an award winning agency based in Fishtown developing interactive
-            experience for museums and non-profits across the nation using C++, React, and Java for native
-            Android development. After Bluecadet I got to work with the talented team over at AI Labs
-            building tools for finnancial advisors in Typescript along with doing open source work on
-            our internal framework based on the Elm Architecture.
+            Currently working with the awesome team over at QuotaPath doing just that.
         `}</Typography>
       </GridItem>
       <GridItem col={{ xs: [1, -1] }}>
@@ -35,14 +26,20 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
       </GridItem>
       <GridItem col={{ xs: [1, -1] }}>
         <Typography>{`
-            Outside of programming some of my interests involve collecting vinyl records, cooking vegan food,
-            minimalism, podcasts, trying new beers, building Gunpla, watching wrestling, and hanging out with my cat Cinnamon.
+            Social media is not really my scene these days. 
+            Besides just being a portfolio this site is a blog for anything and everything that is going on in my life. 
+            Expect lots of programming talks, but sprinkled in you'll also see pictures of my cat, 
+            recipes I've crafted, reviews of movies and records, 
+            progress shots of Gunpla I'm working on, and thoughts on the current state of wrestling around the world.
         `}</Typography>
       </GridItem>
       <GridItem col={{ xs: [1, -1] }}>
         <Typography>{`
-            I don't use social media. So content on this site will revolve around my thoughts about any of the 
-            above and more.
+            That sounds like a lot, and it is, but as I get older I've found writing to be a good way
+            to solidify and express my viewpoints. This site is also a way for friends
+            and family to see what's going on in my life. A close friend of mine use to joke that I'd 
+            probably write a memoir one day. While this is not that it is me planting a flag on a little
+            piece of the internet and allowing me to create the type of content that I enjoy digesting.
         `}</Typography>
       </GridItem>
       <GridItem col={{ xs: [1, -1] }} />
