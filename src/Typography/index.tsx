@@ -58,12 +58,12 @@ const DEFAULT_THEME: Record<VariantKind, FontOptionsProps> = {
   },
 };
 
-type TypogaphyProps = {
+export type TypographyProps = {
   variant?: VariantKind;
   style?: Partial<FontOptionsProps>;
 };
 
-const Typography: React.FC<TypogaphyProps> = ({
+const Typography: React.FC<TypographyProps> = ({
   variant = "p",
   style,
   ...rest
