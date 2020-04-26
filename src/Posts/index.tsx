@@ -1,7 +1,7 @@
 import React from "react";
 import { GridLayout, GridItem } from "../Grid";
 import { Typography } from "../Typography";
-import { Posts, getPreview } from "./posts";
+import { Posts, getPreview, toSlug } from "./posts";
 import { GridSpan } from "../Grid/types";
 import { FlexLayout } from "../FlexLayout";
 import { Tag } from "../Tag";
@@ -22,7 +22,7 @@ export const PostPage: React.FC<PostPageProps> = () => {
                   variant: "h5",
                   style: { margin: "0 0 0.25rem 0" },
                 }}
-                to={`posts/${title.toLowerCase().split(" ").join("-")}`}
+                to={`posts/${toSlug(title)}`}
                 label={title}
               />
               <Typography variant="small" style={{ margin: "0 0 0.75rem 0" }}>

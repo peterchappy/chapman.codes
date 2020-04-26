@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AboutPage } from "./About";
 import { PostPage } from "./Posts";
+import { FullPost } from "./Posts/FullPost";
 import { ProjectsPage } from "./Projects";
 import "./App.css";
 import { BreakpointProvider } from "./BreakPoint";
@@ -21,7 +22,7 @@ function App() {
           <GridItem col={MainCol}>
             <HorizontalRule />
           </GridItem>
-          <GridItem col={MainCol}>
+          <GridItem style={{ marginBottom: "5rem" }} col={MainCol}>
             <Switch>
               <Route
                 exact
@@ -32,8 +33,9 @@ function App() {
               <Route
                 exact
                 path={Routes.PROJECTS}
-                component={() => <ProjectsPage />}
+                render={() => <ProjectsPage />}
               />
+              <Route path={Routes.FULL_POST} render={() => <FullPost />} />
             </Switch>
           </GridItem>
         </GridLayout>

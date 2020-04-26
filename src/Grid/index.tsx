@@ -60,12 +60,18 @@ const GridLayout: React.FC<GridProps> = ({ cols, children }) => {
 type GridItemProps = {
   col: ResponsiveGridMapping;
   row?: ResponsiveGridMapping;
+  style?: React.CSSProperties;
 };
 
 const joinSelectors = (mapping: ResponsiveGridValue): string =>
   Array.isArray(mapping) ? mapping.map(String).join(" / ") : mapping.toString();
 
-const GridItem: React.FC<GridItemProps> = ({ children, col, row }) => {
+const GridItem: React.FC<GridItemProps> = ({
+  children,
+  col,
+  row,
+  style = {},
+}) => {
   const bp = useBreakpoint();
   const bpSelector = getBP(bp);
   const gridColumn: ResponsiveGridValue = bpSelector(col);
@@ -76,6 +82,7 @@ const GridItem: React.FC<GridItemProps> = ({ children, col, row }) => {
         position: "relative",
         gridColumn: joinSelectors(gridColumn),
         gridRow: row && joinSelectors(bpSelector(row)),
+        ...style,
       }}
     >
       <SubGridContext.Provider value={gridColumn}>

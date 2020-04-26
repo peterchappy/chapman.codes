@@ -1,6 +1,6 @@
 import { TagKind } from "../Tag";
 
-enum PostModuleKind {
+export enum PostModuleKind {
   PARAGRAPH = "paragraph",
   IMAGE = "image",
 }
@@ -15,17 +15,23 @@ type ImagePostModule = {
   kind: PostModuleKind.IMAGE;
   src: string;
   alt: string;
-  caption: string;
+  caption?: string;
 };
 
-type PostModule = ParagraphPostModule | ImagePostModule;
+export type PostModule = ParagraphPostModule | ImagePostModule;
 
-type PostType = {
+export type PostType = {
   title: string;
   date: string;
   content: PostModule[];
   tags: TagKind[];
 };
+
+export const toSlug = (title: string) =>
+  title.toLowerCase().split(" ").join("-");
+
+export const findPostBySlug = (posts: PostType[], slug: string) =>
+  posts.filter(({ title }) => toSlug(title) === slug);
 
 export const getPreview = (module: PostModule) =>
   module.kind === PostModuleKind.PARAGRAPH
