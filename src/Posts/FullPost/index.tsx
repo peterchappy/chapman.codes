@@ -5,6 +5,7 @@ import { GridItem, GridLayout } from "../../Grid";
 import { Routes } from "../../Routes";
 import { Typography } from "../../Typography";
 import { findPostBySlug, PostModule, PostModuleKind, Posts } from "../posts";
+import { Tag } from "../../Tag";
 
 type FullPostProps = {};
 
@@ -22,7 +23,7 @@ export const FullPost: React.FC<FullPostProps> = () => {
     return <Redirect to={Routes.POSTS} />;
   }
 
-  const { title, date, content } = post[0];
+  const { title, date, content, tags } = post[0];
 
   return (
     <GridLayout cols="subgrid">
@@ -41,6 +42,13 @@ export const FullPost: React.FC<FullPostProps> = () => {
           {renderModuleType(post)}
         </GridItem>
       ))}
+      <GridItem col={{ xs: [1, -1] }}>
+        <FlexLayout>
+          {tags.map((tag) => (
+            <Tag key={tag} label={tag} />
+          ))}
+        </FlexLayout>
+      </GridItem>
     </GridLayout>
   );
 };
