@@ -1,7 +1,7 @@
 import React from "react";
 
 //TODO: Flesh This Out
-type FlexLayoutProps = {
+export type FlexLayoutProps = {
   flexDirection?: "row" | "row-reverse" | "column" | "column-reverse";
   alignItems?:
     | "flex-start"

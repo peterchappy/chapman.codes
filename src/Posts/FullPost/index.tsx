@@ -3,6 +3,7 @@ import { Redirect, useParams } from "react-router";
 import { FlexLayout } from "FlexLayout";
 import { GridItem, GridLayout } from "Grid";
 import { Routes } from "utils/Routes";
+import { useDocumentTitle } from "utils/useDocumentTitle";
 import { Typography } from "Typography";
 import { findPostBySlug, PostModule, PostModuleKind, Posts } from "Posts/posts";
 import { Tag } from "Tag";
@@ -18,6 +19,8 @@ export const FullPost: React.FC<FullPostProps> = () => {
   const { slug = "" } = useParams();
 
   const post = findPostBySlug(Posts, slug);
+
+  useDocumentTitle(post[0]?.title, []);
 
   if (post.length === 0) {
     return <Redirect to={Routes.POSTS} />;
@@ -39,7 +42,7 @@ export const FullPost: React.FC<FullPostProps> = () => {
       </GridItem>
       {content.map((post, i) => (
         <GridItem key={`${post.kind}-${i}`} col={{ xs: [1, -1] }}>
-          {renderModuleType(post)}
+          <section>{renderModuleType(post)}</section>
         </GridItem>
       ))}
       <GridItem col={{ xs: [1, -1] }}>

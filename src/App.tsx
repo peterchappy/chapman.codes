@@ -22,20 +22,22 @@ function App() {
             <HorizontalRule />
           </GridItem>
           <GridItem style={{ marginBottom: "5rem" }} col={MainCol}>
-            <Switch>
-              <Route
-                exact
-                path={["/", Routes.ABOUT]}
-                render={() => <AboutPage />}
-              />
-              <Route exact path={Routes.POSTS} render={() => <PostPage />} />
-              <Route
-                exact
-                path={Routes.PROJECTS}
-                render={() => <ProjectsPage />}
-              />
-              <Route path={Routes.FULL_POST} render={() => <FullPost />} />
-            </Switch>
+            <main>
+              <Switch>
+                <Route
+                  exact
+                  path={["/", Routes.ABOUT]}
+                  render={() => <AboutPage />}
+                />
+                <Route exact path={Routes.POSTS} render={() => <PostPage />} />
+                <Route
+                  exact
+                  path={Routes.PROJECTS}
+                  render={() => <ProjectsPage />}
+                />
+                <Route path={Routes.FULL_POST} render={() => <FullPost />} />
+              </Switch>
+            </main>
           </GridItem>
         </GridLayout>
       </BreakpointProvider>

@@ -2,7 +2,7 @@ import Octicon, { Mail, MarkGithub } from "@primer/octicons-react";
 import React from "react";
 import { BreakPointUp } from "BreakPoint";
 import { xsMainCol, MainCol } from "utils/constants";
-import { FlexLayout } from "FlexLayout";
+import { FlexLayout, FlexLayoutProps } from "FlexLayout";
 import { GridItem } from "Grid";
 import { GridSpan } from "Grid/types";
 import { Typography } from "Typography";
@@ -37,14 +37,22 @@ const Header: React.FC<HeaderProps> = () => {
         <BreakPointUp
           xs={({ bp }) => {
             const isMobileNav = ["xs"].includes(bp);
+            const flexLayoutStyles: FlexLayoutProps = isMobileNav
+              ? {
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  fullHeight: false,
+                }
+              : {
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                  justifyContent: "center",
+                  fullHeight: true,
+                };
             return (
               <>
-                <FlexLayout
-                  flexDirection={isMobileNav ? "row" : "column"}
-                  alignItems={isMobileNav ? "center" : "flex-end"}
-                  justifyContent={isMobileNav ? "space-between" : "center"}
-                  fullHeight={!isMobileNav}
-                >
+                <FlexLayout {...flexLayoutStyles}>
                   {["about", "posts", "projects"].map((val, i) => {
                     const route = `/${val}`;
                     const active = matchPath(location.pathname, {
@@ -56,7 +64,10 @@ const Header: React.FC<HeaderProps> = () => {
                         key={val}
                         to={route}
                         label={val.toUpperCase()}
-                        active={Boolean(active) || (i === 0 && isRoot)}
+                        active={
+                          (Boolean(active) || (i === 0 && isRoot)) &&
+                          !isMobileNav
+                        }
                         typographyProps={{
                           variant: "h6",
                         }}
