@@ -7,10 +7,19 @@ import { GridItem } from "Grid";
 import { GridSpan } from "Grid/types";
 import { Typography } from "Typography";
 import { Link } from "Link";
+import { matchPath, useLocation } from "react-router";
 
 type HeaderProps = {};
 
 const Header: React.FC<HeaderProps> = () => {
+  const location = useLocation();
+  const isRoot = Boolean(
+    matchPath(location.pathname, {
+      path: "/",
+      exact: true,
+    })
+  );
+
   return (
     <>
       <GridItem col={MainCol} row={{ xs: 1 }}>
@@ -36,16 +45,24 @@ const Header: React.FC<HeaderProps> = () => {
                   justifyContent={isMobileNav ? "space-between" : "center"}
                   fullHeight={!isMobileNav}
                 >
-                  {["about", "posts", "projects"].map((val) => (
-                    <Link
-                      key={val}
-                      to={`/${val}`}
-                      label={val.toUpperCase()}
-                      typographyProps={{
-                        variant: "h6",
-                      }}
-                    />
-                  ))}
+                  {["about", "posts", "projects"].map((val, i) => {
+                    const route = `/${val}`;
+                    const active = matchPath(location.pathname, {
+                      path: route,
+                    });
+
+                    return (
+                      <Link
+                        key={val}
+                        to={route}
+                        label={val.toUpperCase()}
+                        active={Boolean(active) || (i === 0 && isRoot)}
+                        typographyProps={{
+                          variant: "h6",
+                        }}
+                      />
+                    );
+                  })}
                   <FlexLayout alignItems="center">
                     <Link
                       to={"https://www.github.com/peterchappy"}
