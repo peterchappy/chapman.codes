@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AboutPage } from "About";
-import { PostPage } from "Posts";
-import { FullPost } from "Posts/FullPost";
+import { PostListPage } from "PostsListPage";
+import { FullPost } from "PostsListPage/FullPostPage";
 import { ProjectsPage } from "Projects";
 import { BreakpointProvider } from "BreakPoint";
 import { MainCol, TOTAL_GRID_COLS } from "utils/constants";
@@ -29,7 +29,11 @@ function App() {
                   path={["/", Routes.ABOUT]}
                   render={() => <AboutPage />}
                 />
-                <Route exact path={Routes.POSTS} render={() => <PostPage />} />
+                <Route
+                  exact
+                  path={Routes.POSTS}
+                  render={() => <PostListPage />}
+                />
                 <Route
                   exact
                   path={Routes.PROJECTS}

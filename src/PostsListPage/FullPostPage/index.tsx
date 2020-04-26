@@ -5,7 +5,8 @@ import { GridItem, GridLayout } from "Grid";
 import { Routes } from "utils/Routes";
 import { useDocumentTitle } from "utils/useDocumentTitle";
 import { Typography } from "Typography";
-import { findPostBySlug, PostModule, PostModuleKind, Posts } from "Posts/posts";
+import { findPostBySlug, Posts } from "PostsListPage/Posts";
+import { PostModule, PostModuleKind } from "PostsListPage/Posts/types";
 import { Tag } from "Tag";
 
 type FullPostProps = {};

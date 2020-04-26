@@ -11,5 +11,6 @@ export const useDocumentTitle = <T>(title: undefined | string, deps: T[]) => {
     return () => {
       document.title = prevPageTitle;
     };
+    // eslint-disable-next-line
   }, deps);
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { GridLayout, GridItem } from "Grid";
 import { Typography } from "Typography";
-import { Posts, getPreview, toSlug } from "./posts";
+import { Posts, getPreview, toSlug } from "./Posts";
 import { GridSpan } from "Grid/types";
 import { FlexLayout } from "FlexLayout";
 import { Tag } from "Tag";
@@ -9,7 +9,7 @@ import { Link } from "Link";
 
 type PostPageProps = {};
 
-export const PostPage: React.FC<PostPageProps> = () => {
+export const PostListPage: React.FC<PostPageProps> = () => {
   return (
     <GridLayout cols="subgrid">
       {Posts.map(({ title, date, tags, content }) => {
