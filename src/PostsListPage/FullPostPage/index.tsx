@@ -39,9 +39,7 @@ export const FullPost: React.FC<FullPostProps> = () => {
                 {title}
               </Typography>
               <time>
-                <Typography variant="small" style={{ margin: "0 0 0.5rem 0" }}>
-                  {date}
-                </Typography>
+                <Typography variant="small">{date}</Typography>
               </time>
             </FlexLayout>
           </header>

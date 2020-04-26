@@ -2,7 +2,6 @@ import React from "react";
 import { GridLayout, GridItem } from "Grid";
 import { Typography } from "Typography";
 import { Posts, getPreview, toSlug } from "./Posts";
-import { GridSpan } from "Grid/types";
 import { FlexLayout } from "FlexLayout";
 import { Tag } from "Tag";
 import { Link } from "Link";
@@ -15,7 +14,7 @@ export const PostListPage: React.FC<PostPageProps> = () => {
       {Posts.map(({ title, date, tags, content }) => {
         const preview = getPreview(content[0]);
         return (
-          <GridItem key={title} col={{ xs: [1, -1], md: [1, new GridSpan(5)] }}>
+          <GridItem key={title} col={{ xs: [1, -1] }}>
             <FlexLayout flexDirection="column" justifyContent="flex-start">
               <Link
                 typographyProps={{
@@ -25,9 +24,9 @@ export const PostListPage: React.FC<PostPageProps> = () => {
                 to={`posts/${toSlug(title)}`}
                 label={title}
               />
-              <Typography variant="small" style={{ margin: "0 0 0.75rem 0" }}>
-                {date}
-              </Typography>
+              <time style={{ margin: "0 0 1rem 0" }}>
+                <Typography variant="small">{date}</Typography>
+              </time>
               {preview && (
                 <Typography style={{ margin: "0 0 0.75rem 0" }}>
                   {preview}
