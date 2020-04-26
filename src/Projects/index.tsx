@@ -1,11 +1,11 @@
 import React from "react";
-import { GridLayout, GridItem } from "../Grid";
-import { Typography } from "../Typography";
+import { GridLayout, GridItem } from "Grid";
+import { Typography } from "Typography";
 import { projects } from "./project";
-import { GridSpan } from "../Grid/types";
-import { FlexLayout } from "../FlexLayout";
-import { Tag } from "../Tag";
-import { Link } from "../Link";
+import { GridSpan } from "Grid/types";
+import { FlexLayout } from "FlexLayout";
+import { Tag } from "Tag";
+import { Link } from "Link";
 
 type ProjectPageProps = {};
 

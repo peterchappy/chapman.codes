@@ -1,12 +1,12 @@
 import Octicon, { Mail, MarkGithub } from "@primer/octicons-react";
 import React from "react";
-import { BreakPointUp } from "../BreakPoint";
-import { xsMainCol, MainCol } from "../constants";
-import { FlexLayout } from "../FlexLayout";
-import { GridItem } from "../Grid";
-import { GridSpan } from "../Grid/types";
-import { Typography } from "../Typography";
-import { Link } from "../Link";
+import { BreakPointUp } from "BreakPoint";
+import { xsMainCol, MainCol } from "utils/constants";
+import { FlexLayout } from "FlexLayout";
+import { GridItem } from "Grid";
+import { GridSpan } from "Grid/types";
+import { Typography } from "Typography";
+import { Link } from "Link";
 
 type HeaderProps = {};
 

@@ -6,7 +6,7 @@ import {
   ResponsiveGridValue,
 } from "./types";
 import "./index.css";
-import { useBreakpoint } from "../BreakPoint";
+import { useBreakpoint } from "BreakPoint";
 
 //TODO: Better default for Context.
 const SubGridContext: React.Context<ResponsiveGridValue> = React.createContext(

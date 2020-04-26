@@ -1,4 +1,4 @@
-import { TagKind } from "../Tag";
+import { TagKind } from "Tag";
 
 type ProjectType = {
   title: string;

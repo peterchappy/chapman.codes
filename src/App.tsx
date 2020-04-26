@@ -1,17 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { AboutPage } from "./About";
-import { PostPage } from "./Posts";
-import { FullPost } from "./Posts/FullPost";
-import { ProjectsPage } from "./Projects";
-import "./App.css";
-import { BreakpointProvider } from "./BreakPoint";
-import { MainCol, TOTAL_GRID_COLS } from "./constants";
-import { GridItem, GridLayout } from "./Grid";
-import { Repeat } from "./Grid/types";
-import { Header } from "./Header";
-import { Routes } from "./Routes";
-import { HorizontalRule } from "./HorizontalRule";
+import { AboutPage } from "About";
+import { PostPage } from "Posts";
+import { FullPost } from "Posts/FullPost";
+import { ProjectsPage } from "Projects";
+import { BreakpointProvider } from "BreakPoint";
+import { MainCol, TOTAL_GRID_COLS } from "utils/constants";
+import { GridItem, GridLayout } from "Grid";
+import { Repeat } from "Grid/types";
+import { Header } from "Header";
+import { Routes } from "utils/Routes";
+import { HorizontalRule } from "HorizontalRule";
 
 function App() {
   return (

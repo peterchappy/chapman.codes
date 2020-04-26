@@ -1,4 +1,4 @@
-import { GridSpan, ResponsiveGridValue, ResponsiveMapping } from "./Grid/types";
+import { GridSpan, ResponsiveGridValue, ResponsiveMapping } from "Grid/types";
 
 export const TOTAL_GRID_COLS = 16;
 

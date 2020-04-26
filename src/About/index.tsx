@@ -1,6 +1,6 @@
 import React from "react";
-import { GridLayout, GridItem } from "../Grid";
-import { Typography } from "../Typography";
+import { GridLayout, GridItem } from "Grid";
+import { Typography } from "Typography";
 
 type AboutPageProps = {};
 

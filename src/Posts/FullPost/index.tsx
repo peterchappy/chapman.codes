@@ -1,11 +1,11 @@
 import React from "react";
 import { Redirect, useParams } from "react-router";
-import { FlexLayout } from "../../FlexLayout";
-import { GridItem, GridLayout } from "../../Grid";
-import { Routes } from "../../Routes";
-import { Typography } from "../../Typography";
-import { findPostBySlug, PostModule, PostModuleKind, Posts } from "../posts";
-import { Tag } from "../../Tag";
+import { FlexLayout } from "FlexLayout";
+import { GridItem, GridLayout } from "Grid";
+import { Routes } from "utils/Routes";
+import { Typography } from "Typography";
+import { findPostBySlug, PostModule, PostModuleKind, Posts } from "Posts/posts";
+import { Tag } from "Tag";
 
 type FullPostProps = {};
 

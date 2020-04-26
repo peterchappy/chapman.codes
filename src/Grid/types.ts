@@ -1,4 +1,4 @@
-import { Functor } from "../Functor";
+import { Functor } from "Functor";
 
 export class GridCSSItem {}
 

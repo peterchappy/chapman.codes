@@ -1,6 +1,6 @@
 import React from "react";
 import { Link as RRLink } from "react-router-dom";
-import { Typography, TypographyProps } from "../Typography";
+import { Typography, TypographyProps } from "Typography";
 
 const LINK_STYLE = { textDecoration: "none", color: "#000" };
 

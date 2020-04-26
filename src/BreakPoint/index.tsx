@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  ResponsiveMapping,
-  ResponsiveMappingFunctor,
-  getBP,
-} from "../Grid/types";
+import { ResponsiveMapping, ResponsiveMappingFunctor, getBP } from "Grid/types";
 import { MinWidthPx } from "./types";
 
 const defaultQueries: ResponsiveMapping<MinWidthPx> = {
