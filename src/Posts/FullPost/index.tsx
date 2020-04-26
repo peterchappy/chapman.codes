@@ -29,29 +29,35 @@ export const FullPost: React.FC<FullPostProps> = () => {
   const { title, date, content, tags } = post[0];
 
   return (
-    <GridLayout cols="subgrid">
-      <GridItem col={{ xs: [1, -1] }}>
-        <FlexLayout flexDirection="column">
-          <Typography variant="h4" style={{ margin: "0 0 0.25rem 0" }}>
-            {title}
-          </Typography>
-          <Typography variant="small" style={{ margin: "0 0 0.5rem 0" }}>
-            {date}
-          </Typography>
-        </FlexLayout>
-      </GridItem>
-      {content.map((post, i) => (
-        <GridItem key={`${post.kind}-${i}`} col={{ xs: [1, -1] }}>
-          <section>{renderModuleType(post)}</section>
+    <article>
+      <GridLayout cols="subgrid">
+        <GridItem col={{ xs: [1, -1] }}>
+          <header>
+            <FlexLayout flexDirection="column">
+              <Typography variant="h4" style={{ margin: "0 0 0.25rem 0" }}>
+                {title}
+              </Typography>
+              <time>
+                <Typography variant="small" style={{ margin: "0 0 0.5rem 0" }}>
+                  {date}
+                </Typography>
+              </time>
+            </FlexLayout>
+          </header>
         </GridItem>
-      ))}
-      <GridItem col={{ xs: [1, -1] }}>
-        <FlexLayout>
-          {tags.map((tag) => (
-            <Tag key={tag} label={tag} />
-          ))}
-        </FlexLayout>
-      </GridItem>
-    </GridLayout>
+        {content.map((post, i) => (
+          <GridItem key={`${post.kind}-${i}`} col={{ xs: [1, -1] }}>
+            {renderModuleType(post)}
+          </GridItem>
+        ))}
+        <GridItem col={{ xs: [1, -1] }}>
+          <FlexLayout>
+            {tags.map((tag) => (
+              <Tag key={tag} label={tag} />
+            ))}
+          </FlexLayout>
+        </GridItem>
+      </GridLayout>
+    </article>
   );
 };

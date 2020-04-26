@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = () => {
                   fullHeight: true,
                 };
             return (
-              <>
+              <nav>
                 <FlexLayout {...flexLayoutStyles}>
                   {["about", "posts", "projects"].map((val, i) => {
                     const route = `/${val}`;
@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = () => {
                     />
                   </FlexLayout>
                 </FlexLayout>
-              </>
+              </nav>
             );
           }}
         />

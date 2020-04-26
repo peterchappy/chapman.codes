@@ -19,7 +19,7 @@ export const PostPage: React.FC<PostPageProps> = () => {
             <FlexLayout flexDirection="column" justifyContent="flex-start">
               <Link
                 typographyProps={{
-                  variant: "h5",
+                  variant: "h4",
                   style: { margin: "0 0 0.25rem 0" },
                 }}
                 to={`posts/${toSlug(title)}`}
