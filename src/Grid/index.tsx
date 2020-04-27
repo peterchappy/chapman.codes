@@ -5,7 +5,6 @@ import {
   getBP,
   ResponsiveGridValue,
 } from "./types";
-import "./index.css";
 import { useBreakpoint } from "BreakPoint";
 
 //TODO: Better default for Context.
