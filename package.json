@@ -32,7 +32,7 @@
     "start": "node server-build/index.js",
     "build:client": "react-scripts build",
     "build:server": "NODE_ENV=development webpack --config webpack.server.js",
-    "build": "npm-run-all --parallel build",
+    "build": "npm-run-all --parallel build:*",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development -w",
