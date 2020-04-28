@@ -5,29 +5,39 @@ import React from "react";
 import express from "express";
 import ReactDOMServer from "react-dom/server";
 import App from "../src/App";
+import { StaticRouter, StaticRouterContext } from "react-router";
 
 const favicon = require("express-favicon");
 
 const port = process.env.PORT || 8080;
 const app = express();
 
-app.use(favicon(__dirname + "/build/favicon.ico"));
-app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, "build")));
+app.use(favicon("./build/favicon.ico"));
+app.use(express.static("build"));
 
 app.get("/*", (req, res) => {
-  const app = ReactDOMServer.renderToString(React.createElement(App));
+  const context: StaticRouterContext = {};
+  const app = ReactDOMServer.renderToString(
+    React.createElement(
+      StaticRouter,
+      { location: req.url, context },
+      React.createElement(App)
+    )
+  );
 
   const indexFile = path.resolve("./build/index.html");
+
   fs.readFile(indexFile, "utf8", (err, data) => {
     if (err) {
       console.error("Something went wrong:", err);
       return res.status(500).send("Oops, better luck next time!");
     }
-
-    return res.send(
-      data.replace('<div id="root"></div>', `<div id="root">${app}</div>`)
+    const preRendered = data.replace(
+      '<div id="root"></div>',
+      `<div id="root">${app}</div>`
     );
+
+    return res.send(preRendered);
   });
 });
 

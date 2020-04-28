@@ -4,12 +4,14 @@ export const useDocumentTitle = <T>(title: undefined | string, deps: T[]) => {
   const [prevPageTitle] = React.useState<string>(document.title);
 
   React.useEffect(() => {
-    if (title) {
+    if (title && document) {
       document.title = title;
     }
 
     return () => {
-      document.title = prevPageTitle;
+      if (document) {
+        document.title = prevPageTitle;
+      }
     };
     // eslint-disable-next-line
   }, deps);
