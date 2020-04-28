@@ -1,8 +1,8 @@
 import path from "path";
 import fs from "fs";
-
-import React from "react";
+import compression from "compression";
 import express from "express";
+import React from "react";
 import ReactDOMServer from "react-dom/server";
 import App from "../src/App";
 import { StaticRouter, StaticRouterContext } from "react-router";
@@ -12,6 +12,7 @@ const favicon = require("express-favicon");
 const port = process.env.PORT || 8080;
 const app = express();
 
+app.use(compression());
 app.use(favicon("./build/favicon.ico"));
 app.use(express.static("build"));
 
