@@ -1,16 +1,34 @@
 import React from "react";
 
+const tryToSetDocumentTitle = (title: string) => {
+  try {
+    document.title = title;
+  } catch (e) {
+    console.warn("document not found");
+  }
+};
+
 export const useDocumentTitle = <T>(title: undefined | string, deps: T[]) => {
-  const [prevPageTitle] = React.useState<string>(document.title);
+  const isBrowser = typeof document !== "undefined";
+  const [prevPageTitle, setPrevPageTitle] = React.useState<string>(
+    isBrowser ? document.title : ""
+  );
 
   React.useEffect(() => {
-    if (title) {
-      document.title = title;
+    if (isBrowser) {
+      setPrevPageTitle(document.title);
+    }
+  }, [isBrowser]);
+
+  React.useEffect(() => {
+    if (title && isBrowser) {
+      tryToSetDocumentTitle(title);
     }
 
     return () => {
-      document.title = prevPageTitle;
+      if (isBrowser) {
+        tryToSetDocumentTitle(prevPageTitle);
+      }
     };
-    // eslint-disable-next-line
-  }, deps);
+  }, [isBrowser, title, prevPageTitle, deps]);
 };
