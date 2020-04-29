@@ -3,17 +3,20 @@ import { Redirect, useParams } from "react-router";
 import { FlexLayout } from "FlexLayout";
 import { GridItem, GridLayout } from "Grid";
 import { Routes } from "utils/Routes";
-import { useDocumentTitle } from "utils/useDocumentTitle";
 import { Typography } from "Typography";
 import { findPostBySlug, Posts } from "PostsListPage/Posts";
 import { PostModule, PostModuleKind } from "PostsListPage/Posts/types";
 import { Tag } from "Tag";
+import Highlight from "react-highlight";
+import { useDocumentTitle } from "@chappy/use-document-title";
 
 type FullPostProps = {};
 
 const renderModuleType = (post: PostModule) =>
   post.kind === PostModuleKind.PARAGRAPH ? (
     <Typography>{post.content}</Typography>
+  ) : post.kind === PostModuleKind.CODE ? (
+    <Highlight className={post.language}>{post.content}</Highlight>
   ) : null;
 
 export const FullPost: React.FC<FullPostProps> = () => {
@@ -21,7 +24,7 @@ export const FullPost: React.FC<FullPostProps> = () => {
 
   const post = findPostBySlug(Posts, slug);
 
-  useDocumentTitle(post[0]?.title, []);
+  useDocumentTitle({ title: post[0]?.title, revertOnUnmount: true });
 
   if (post.length === 0) {
     return <Redirect to={Routes.POSTS} />;

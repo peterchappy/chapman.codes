@@ -3,6 +3,7 @@ import { TagKind } from "Tag";
 export enum PostModuleKind {
   PARAGRAPH = "paragraph",
   IMAGE = "image",
+  CODE = "code",
 }
 
 export type ParagraphPostModule = {
@@ -18,7 +19,13 @@ export type ImagePostModule = {
   caption?: string;
 };
 
-export type PostModule = ParagraphPostModule | ImagePostModule;
+export type CodePostModule = {
+  kind: PostModuleKind.CODE;
+  content: string;
+  language: "TypeScript";
+};
+
+export type PostModule = ParagraphPostModule | ImagePostModule | CodePostModule;
 
 export type PostType = {
   title: string;
