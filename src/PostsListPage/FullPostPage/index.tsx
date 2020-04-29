@@ -8,12 +8,15 @@ import { Typography } from "Typography";
 import { findPostBySlug, Posts } from "PostsListPage/Posts";
 import { PostModule, PostModuleKind } from "PostsListPage/Posts/types";
 import { Tag } from "Tag";
+import Highlight from "react-highlight";
 
 type FullPostProps = {};
 
 const renderModuleType = (post: PostModule) =>
   post.kind === PostModuleKind.PARAGRAPH ? (
     <Typography>{post.content}</Typography>
+  ) : post.kind === PostModuleKind.CODE ? (
+    <Highlight className={post.language}>{post.content}</Highlight>
   ) : null;
 
 export const FullPost: React.FC<FullPostProps> = () => {

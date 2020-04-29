@@ -1,4 +1,6 @@
 import { shipHobbyCodeOften } from "./ship-hobby-code-often";
+import { testCodeBlock } from "./test-post";
+
 import { PostType, PostModule, PostModuleKind } from "./types";
 import { includeIf } from "utils/includeIf";
 
@@ -22,4 +24,7 @@ export const includeIfPublished = (post: PostType): PostType[] => {
   );
 };
 
-export const Posts: PostType[] = [...includeIfPublished(shipHobbyCodeOften)];
+export const Posts: PostType[] = [
+  ...includeIfPublished(shipHobbyCodeOften),
+  ...includeIfPublished(testCodeBlock),
+];
